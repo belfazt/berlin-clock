@@ -3,7 +3,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    ClockTest.class
+    ClockTest.class,
+    LightTest.class
 })
 public class TestSuite {
 }
