@@ -17,6 +17,26 @@ $ ./gradlew assemble
 
 ```
 
+## Running Tests
+```bash
+$ ./gradlew test
+# :compileJava UP-TO-DATE
+# :processResources NO-SOURCE
+# :classes UP-TO-DATE
+# :compileTestJava
+# :processTestResources NO-SOURCE
+# :testClasses
+# :test
+# :jacocoTestReport
+
+# BUILD SUCCESSFUL
+
+# Total time: 2.284 secs
+```
+
+### Coverage Reports
+These get generated in the following path `./build/reports/jacoco/test`
+
 # Contributors
 
 - Diego Camargo

@@ -2,12 +2,45 @@ group 'xyz.diegocamargo'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
+
+jacoco {
+    toolVersion = '0.7.9'
+}
+
+subprojects {
+    dependencies {
+
+    }
+
+    test.useTestNG()
+}
+
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled false
+        html.destination "{$buildDir}/reports/jacoco/html"
+        csv.enabled false
+    }
+}
+
+codeCoverageReport.dependsOn {
+    subprojects*.test
+}
+
+test { finalizedBy jacocoTestReport }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
